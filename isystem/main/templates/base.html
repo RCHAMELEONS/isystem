@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+	<title>{%block title%}{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'libs/jq/jquery.min.js' %}"></script>
+    <script src="{% static 'libs/fancybox/jquery.fancybox.js' %}"></script>
+    <link href="{% static 'libs/fancybox/jquery.fancybox.css' %}" rel="stylesheet">
+    <script src="{% static 'libs/mask/jquery.maskedinput.js' %}"></script>
+    <script src="{% static 'libs/choosen/choosen.js' %}"></script>
+    <link href="{% static 'libs/choosen/choosen.css' %}" rel="stylesheet">
+    <script src="{% static 'libs/datepicker/datepicker.min.js' %}"></script>
+    <link href="{% static 'libs/datepicker/datepicker.min.css' %}" rel="stylesheet">
+    <script src="{% static 'scripts/scripts.js' %}"></script>
+</head>
+<body class="body">
+    <header class="header">
+        <div class="container">
+            <menu class="navigator">
+                <li class="navigation__item"><a href="{% url 'index' %}" class="navigation__item-link">Главная</a></li>
+                <li class="navigation__item"><a href="{% url 'appeal_add' %}" class="navigation__item-link">Подать обращение</a></li>
+                <li class="navigation__item"><a href="/questions/" class="navigation__item-link">Вопрос-Ответ</a></li>
+                <li class="navigation__item"><a href="{% url 'contacts' %}" class="navigation__item-link">Контакты</a></li>
+                <li class="navigation__item"><a href="{% url 'lk' %}" class="navigation__item-link">Личный кабинет</a></li>
+            </menu>
+        </div>
+    </header>
+
+    <div class="container container_page">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <menu class="footer-navi">
+                <li class="footer-navi__item"><a href="{% url 'appeal_add' %}" class="footer-navi__item-link">Подать обращение</a></li>
+                <li class="footer-navi__item"><a href="/questions/" class="footer-navi__item-link">Вопрос-Ответ</a></li>
+                <li class="footer-navi__item"><a href="{% url 'contacts' %}" class="footer-navi__item-link">Контакты</a></li>
+                <li class="footer-navi__item"><a href="{% url 'lk' %}" class="footer-navi__item-link">Личный кабинет</a></li>
+            </menu>
+        </div>
+    </footer>
+</body>
+</html>

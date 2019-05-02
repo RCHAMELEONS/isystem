@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Личный кабинет
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a class="button button_q" href="{% url 'user_update' %}">Изменить профиль</a>
+    </div>
+    {% if questions %}
+        <section class="content">
+            <h2>Ваши вопросы</h2>
+            {% for question in questions %}
+                <article class="lk-element">
+                    <div class="lk-element__head">{{ question.theme }}</div>
+                    <div class="lk-element__body">
+                        <b>Содержание: </b>{{ question.content_question }}
+                    </div>
+                </article>
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    {% if questions and answers %}
+        <section class="content">
+            <h2>Ответы на вопросы</h2>
+                {% for question in questions %}
+                    {% for answer in answers %}
+                        {% if answer.question == question %}
+                            <article class="lk-element">
+                                <div class="lk-element__head">{{ question.theme }}</div>
+                                <div class="lk-element__body">
+                                    <b>Ответ специалиста: </b>{{ answer.answer_content }}
+                                    {% if answer.image %}
+                                        <br>
+                                       <a class="fancy link" href="{{answer.image.url}}" title="Изображение">Прикрепленное изображение</a>
+                                    {% endif %}
+                                    {% if answer.file %}
+                                        <br>
+                                       <a class="link" target="_blank" href="{{answer.file.url}}" title="Файл">Прикрепленный файл</a>
+                                    {% endif %}
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+        </section>
+    {% endif %}
+
+    {% if appeals %}
+        <section class="content">
+            <h2>Ваши обращения</h2>
+            {% for appeal in appeals %}
+                <article class="lk-element">
+                    <div class="lk-element__head">{{ appeal.theme }}</div>
+                    <div class="lk-element__body">
+                        <b>Содержание: </b>{{ appeal.content_appeals }}
+                    </div>
+                </article>
+            {% endfor %}
+        </section>
+    {% endif %}
+
+
+    {% if appeals and responses %}
+        <section class="content">
+            <h2>Ответы на обращения</h2>
+                {% for appeal in appeals %}
+                    {% for response in responses %}
+                        {% if response.appeal == appeal %}
+                            <article class="lk-element">
+                                <div class="lk-element__head">{{ appeal.theme }}</div>
+                                <div class="lk-element__body">
+                                    <b>Ответ специалиста: </b>{{ response.response_content }}
+                                    {% if response.image %}
+                                        <br>
+                                       <a class="fancy link" href="{{response.image.url}}" title="Изображение">Прикрепленное изображение</a>
+                                    {% endif %}
+                                    {% if response.file %}
+                                        <br>
+                                       <a class="link" target="_blank" href="{{response.file.url}}" title="Файл">Прикрепленный файл</a>
+                                    {% endif %}
+                                </div>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}

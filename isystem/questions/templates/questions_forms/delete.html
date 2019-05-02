@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Удалить Ваш вопрос
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="" class="inter-form">
+        <h2>Вы действительно хотите удалить?</h2>
+        <h4>После подтверждения действия информация будет полностью удалена</h4>
+        {% csrf_token %}
+        <div class="add-on__container add-on__container_left"><button type="submit" class="button button_delete">Удалить вопрос</button></div>
+        <div class="add-on__container add-on__container_left"><a href="{% url 'index' %}" class="button">Назад</a></div>
+    </form>
+{% endblock %}

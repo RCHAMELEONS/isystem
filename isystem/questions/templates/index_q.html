@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Вопрос-ответ
+{% endblock %}
+
+{% block content %}
+    <a class="button button_q" href="{% url 'question_add' %}">Задать вопрос</a>
+    {% if questions and answers %}
+        <section class="content">
+            {% for question in questions %}
+                {% for answer in answers %}
+                    {% if answer.question == question %}
+                        <article class="q-answers">
+                            <div class="q-answers__head">{{ question.theme }}</div>
+                            <div class="q-answers__body">
+                                <b>Ответ от специалиста:</b> {{ answer.answer_content }}
+                            </div>
+                        </article>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </section>
+    {% endif %}
+
+{% endblock %}

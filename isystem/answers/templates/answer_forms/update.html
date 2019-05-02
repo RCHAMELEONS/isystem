@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Измените ответ
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="" class="inter-form">
+        {% csrf_token %}
+        <div class="inter-form__row">
+            <span class="label-info">Вопрос <span class="red-star">*</span></span>
+            {{ form.question }}
+        </div>
+        <div class="inter-form__row">
+            <span class="label-info">Содержание ответа <span class="red-star">*</span></span>
+            {{ form.answer_content }}
+        </div>
+        <div class="inter-form__row">
+            <span class="label-info">Изображение</span>
+            {{ form.image }}
+        </div>
+        <div class="inter-form__row">
+            <span class="label-info">Документ</span>
+            {{ form.file }}
+        </div>
+        <div class="inter-form__container"><button type="submit" class="button">Изменить ответ</button></div>
+    </form>
+{% endblock %}

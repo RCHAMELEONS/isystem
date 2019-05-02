@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<html lang="ru">
+
+{% block content %}
+    {% if not user.is_authenticated%}
+        <div class="login">
+            <form method="post" class="inter-form">
+            {% csrf_token %}
+                <div class="inter-form__row">
+                    <input id="id_username" name="username" type="text" placeholder="Имя пользователя">
+                </div>
+                <div class="inter-form__row">
+                    <input id="id_password" name="password" type="password" placeholder="Пароль">
+                </div>
+                <div class="inter-form__container inter-form__container_left"><button type="submit" class="button">Войти</button></div>
+                <div class="inter-form__container inter-form__container_left"><a href="{% url "user_register" %}" class="button button_delete">Зарегистрироваться</a></div>
+          </form>
+        </div>
+    {% else %}
+        <div class="login login_center">
+            <p>Вы уже авторизованы</p>
+            <a class="link" href="{% url 'index' %}">Перейти на главную страницу</a>
+        </div>
+    {% endif %}
+{% endblock %}

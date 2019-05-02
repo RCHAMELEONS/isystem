@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Регистрация в ИС
+{% endblock %}
+
+{% block content %}
+    {% if not user.is_authenticated %}
+        <form method="post" action="" class="inter-form inter-form_small">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="inter-form__row">
+                    <span class="label-info">Адрес электронной почты <span class="red-star">*</span></span>
+                    {{ form.email }}
+                </div>
+                <div class="inter-form__row">
+                    <span class="label-info">Пароль <span class="red-star">*</span></span>
+                    {{ form.password1 }}
+                </div>
+                 <div class="inter-form__row">
+                    <span class="label-info">Подтвердите пароль <span class="red-star">*</span></span>
+                    {{ form.password2 }}
+                </div>
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Фамилия <span class="red-star">*</span></span>
+                {{ form.second_name }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Имя <span class="red-star">*</span></span>
+                {{ form.first_name }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Отчество <span class="red-star">*</span></span>
+                {{ form.patronymic }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Дата рождения <span class="red-star">*</span></span>
+                {{ form.date_birth }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Пол <span class="red-star">*</span></span>
+                {{ form.sex }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Номер телефона <span class="red-star">*</span></span>
+                {{ form.phone_number }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Гражданство <span class="red-star">*</span></span>
+                {{ form.nationality }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Серия паспорта <span class="red-star">*</span></span>
+                {{ form.series_document }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Номер паспорта <span class="red-star">*</span></span>
+                {{ form.number_document }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Дата выдачи паспорта <span class="red-star">*</span></span>
+                {{ form.date_document }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Место выдачи паспорта <span class="red-star">*</span></span>
+                {{ form.place_document }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Индекс регистрации <span class="red-star">*</span></span>
+                {{ form.index_registration }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Город/село <span class="red-star">*</span></span>
+                {{ form.city_registration }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Улица <span class="red-star">*</span></span>
+                {{ form.street_registration }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Номер дома <span class="red-star">*</span></span>
+                {{ form.house_registration }}
+            </div>
+            <div class="inter-form__row">
+                <span class="label-info">Номер квартиры <span class="red-star">*</span></span>
+                {{ form.apartment_registration }}
+            </div>
+            <div class="inter-form__container"><button type="submit" class="button">Зарегистрироваться</button></div>
+        </form>
+    {% else %}
+        <h3>Вы уже авторизованны</h3>
+        <div class="inter-form__container"><a href="{% url 'index' %}" class="button">Назад</a></div>
+    {% endif %}
+
+{% endblock %}
